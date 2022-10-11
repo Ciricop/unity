@@ -1,0 +1,96 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class invisible : MonoBehaviour
+{   
+    //невидимый, сюда можно добавлять в принцепе в воид старт
+    // Start is called before the first frame update
+    void Start()
+    {
+    Debug.Log("Неприкасайся ко мне");    
+    }
+    //bool a = false ;
+    int a = 0;
+    public Rigidbody2D rb;
+    int speed = 1;
+    //int i = 1;
+    // Update is called once per frame
+    void Update()
+    {
+      //switch(i)
+      //{
+       /* case 1 :
+          transform.position = transform.position + new Vector3(1,0);
+          i = 2;
+          break;
+        case 2 :
+          transform.position = transform.position + new Vector3(0,1);
+          i = 3;
+          break;
+        case 3 :
+          transform.position = transform.position + new Vector3(-1,0);
+          i = 4;
+          break;
+        case 4 :
+          transform.position = transform.position + new Vector3(0,-1);
+          i = 1;
+          break;
+        */
+      if (Input.GetKey(KeyCode.D) && a == 0)
+      {
+        rb.velocity = new Vector2(5f *speed, 0f);
+        a=1;
+      }
+      if (Input.GetKeyUp(KeyCode.D) && a==1)
+      {
+        rb.velocity = new Vector2(0f *speed, 0f);
+        a=0;
+      }
+
+       if (Input.GetKey(KeyCode.A) && a == 0)
+      {
+        rb.velocity = new Vector2(-5f *speed, 0f);
+        a=1;
+      }
+      if (Input.GetKeyUp(KeyCode.A) && a==1)
+      {
+        rb.velocity = new Vector2(0f *speed, 0f);
+        a=0;
+      }
+
+       if (Input.GetKey(KeyCode.W) && a == 0)
+      {
+        rb.velocity = new Vector2(0f *speed, 5f);
+        a=1;
+      }
+      if (Input.GetKeyUp(KeyCode.W) && a==1)
+      {
+        rb.velocity = new Vector2(0f *speed, 0f);
+        a=0;
+      }
+
+       if (Input.GetKey(KeyCode.S) && a == 0)
+      {
+        rb.velocity = new Vector2(0f *speed, -5f);
+        a=1;
+      }
+      if (Input.GetKeyUp(KeyCode.S) && a==1)
+      {
+        rb.velocity = new Vector2(0f *speed, 0f);
+        a=0;
+      }
+    }
+    //пример когда игрок входит в квадрат или сказать нажимает на кнопку при этом риджетбодди2д(статик или кинематик) и бокс колайдер(тригерет) 
+    void OnTriggerEnter2D(Collider2D other) 
+    {
+      other.transform.position=transform.position + new Vector3(10,0,0);
+      Debug.Log(" \"КИДАЕТ ТЕБЯ ПРОГИБОМ\" ");  
+    }
+    
+    
+
+
+        
+    
+}
