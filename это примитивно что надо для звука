@@ -1,0 +1,14 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class soundskript : MonoBehaviour
+{   
+    public AudioSource theworld; //звук пример тоже самое на счет oncollider enter и тд
+
+    if (Input.GetKey(KeyCode.F)) 
+    {
+        theworld.Play();//чтобы переменная работала надо файл перетащить
+    }
+}
+   
