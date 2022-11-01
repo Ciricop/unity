@@ -1,0 +1,32 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class killerplatform : MonoBehaviour
+{
+    public AudioSource deth;
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+     
+    }
+     void OnTriggerEnter2D(Collider2D other) //есле в тригер вошли
+     {
+      if (other.tag == "Player") // есле тег игрок то
+      {
+        deth.Play(); 
+        Invoke("Reloadlevel",1);
+      }
+     } 
+     private void Reloadlevel()
+     {
+      SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);//метод класса SceneManger загружающий текущую сцену. Для работы нужно вверху скрипта прописать using UnityEngine.SceneManagement;
+     }
+}
