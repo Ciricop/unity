@@ -1,0 +1,48 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerControllerX : MonoBehaviour
+{
+    public float speed;
+    public float rotationSpeed;
+    public float verticalInput;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        speed = 0.1f;
+        rotationSpeed = 1f;
+        verticalInput = 0f;
+    }
+
+    // Update is called once per frame
+    void FixedUpdate()
+    {
+        // get the user's vertical input
+
+
+     verticalInput = (Input.GetAxis("Vertical")* 10);
+        // move the plane forward at a constant rate
+        transform.Translate(Vector3.back * -speed);
+
+        // tilt the plane up/down based on up/down arrow keys
+        if (Input.GetKey(KeyCode.D))
+        {
+            transform.Rotate(Vector3.forward * rotationSpeed);
+        }
+        if (Input.GetKey(KeyCode.A))
+        {
+            transform.Rotate(Vector3.back * rotationSpeed);
+        }
+        if (Input.GetKey(KeyCode.W))
+        {
+            transform.Rotate(Vector3.right * rotationSpeed);
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            transform.Rotate(Vector3.left * rotationSpeed);
+            // Time.deltaTime
+        }
+    }
+}
