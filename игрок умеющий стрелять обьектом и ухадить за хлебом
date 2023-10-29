@@ -31,7 +31,7 @@ public class playercountrolerabeme : MonoBehaviour
         if (transform.position.z >= 100 || transform.position.z <= -100)
         {
             Destroy(gameObject);
-            Debug.Log("Âàø ïåðñîíàæ óø¸ë çà õëåáîì");
+            Debug.Log("Ã‚Ã Ã¸ Ã¯Ã¥Ã°Ã±Ã®Ã­Ã Ã¦ Ã³Ã¸Â¸Ã« Ã§Ã  ÃµÃ«Ã¥Ã¡Ã®Ã¬");
         }
     }
 }
