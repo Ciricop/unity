@@ -18,7 +18,7 @@ public class gameoveryeeeeeeeet : MonoBehaviour
         
         if (transform.position.z >= 100 || transform.position.z <= -50)
         {
-            Debug.Log("ÄÀ ÒÛ ÄÅÁÈÊ Ó ÒÅÁß ÆÅÂÎÒÍÎÅ ÂÑÅ ÑÅÍÎ ÑÎÆÐÀËÎ ÁËßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßß");
+            Debug.Log("Ã„Ã€ Ã’Ã› Ã„Ã…ÃÃˆÃŠ Ã“ Ã’Ã…ÃÃŸ Ã†Ã…Ã‚ÃŽÃ’ÃÃŽÃ… Ã‚Ã‘Ã… Ã‘Ã…ÃÃŽ Ã‘ÃŽÃ†ÃÃ€Ã‹ÃŽ ÃÃ‹ÃŸÃŸÃŸÃŸÃŸÃŸÃŸÃŸÃŸÃŸÃŸÃŸÃŸÃŸÃŸÃŸÃŸÃŸÃŸÃŸÃŸÃŸÃŸÃŸÃŸÃŸÃŸÃŸÃŸÃŸÃŸÃŸÃŸÃŸÃŸÃŸÃŸÃŸÃŸÃŸÃŸÃŸÃŸ");
         }
         if (transform.position.z >= 80 || transform.position.z <= -80)
         {
@@ -27,6 +27,6 @@ public class gameoveryeeeeeeeet : MonoBehaviour
          
     }void Reloadlevel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);//ìåòîä êëàññà SceneManger çàãðóæàþùèé òåêóùóþ ñöåíó. Äëÿ ðàáîòû íóæíî ââåðõó ñêðèïòà ïðîïèñàòü using UnityEngine.SceneManagement;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);//Ã¬Ã¥Ã²Ã®Ã¤ ÃªÃ«Ã Ã±Ã±Ã  SceneManger Ã§Ã Ã£Ã°Ã³Ã¦Ã Ã¾Ã¹Ã¨Ã© Ã²Ã¥ÃªÃ³Ã¹Ã³Ã¾ Ã±Ã¶Ã¥Ã­Ã³. Ã„Ã«Ã¿ Ã°Ã Ã¡Ã®Ã²Ã» Ã­Ã³Ã¦Ã­Ã® Ã¢Ã¢Ã¥Ã°ÃµÃ³ Ã±ÃªÃ°Ã¨Ã¯Ã²Ã  Ã¯Ã°Ã®Ã¯Ã¨Ã±Ã Ã²Ã¼ using UnityEngine.SceneManagement;
     }
 }
