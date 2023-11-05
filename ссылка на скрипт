@@ -1,0 +1,6 @@
+private playercontrols playercontrolsskript;// буквально переменная означающая скрип можно обратиться к любому
+void Start()
+{
+    playercontrolsskript = GameObject.Find("player").GetComponent<playercontrols>();// используется для использования публичных переменных из других скриптов зависит от 1 строки
+    
+}
