@@ -1,0 +1,27 @@
+using System.Collections;
+using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEngine;
+
+public class spawner : MonoBehaviour
+{
+    private playercontrols playercontrolsskript;// из ссылки
+    private float startDelay = 2;
+    private float repeatRate = 2;
+    public GameObject obstaclePrefab;//взять префаб
+    private Vector3 spawnPos = new Vector3(25,0,0);//позиция упращенная
+    void Start()
+    {
+        playercontrolsskript = GameObject.Find("player").GetComponent<playercontrols>();// из ссылки
+        InvokeRepeating("SpawnObstale", startDelay, repeatRate);//цикл спавна обьекта
+
+    }
+    void SpawnObstale()
+    {
+        if (playercontrolsskript.GameOver == false)// если условие не будет выполнятся то цикл не работает тк спавнить нечего
+        {
+            Instantiate(obstaclePrefab, spawnPos, obstaclePrefab.transform.rotation);// взять обьект его позицию и поворот
+        }
+        
+    }
+}
