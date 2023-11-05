@@ -2,5 +2,5 @@ private playercontrols playercontrolsskript;// буквально перемен
 void Start()
 {
     playercontrolsskript = GameObject.Find("player").GetComponent<playercontrols>();// используется для использования публичных переменных из других скриптов зависит от 1 строки
-    
+    (playercontrolsskript.GameOver == false )//примерно как должен выглядить обращение переменной из другово скрипта в данном контексте он bool
 }
