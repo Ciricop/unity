@@ -1,0 +1,57 @@
+using JetBrains.Annotations;
+using System.Collections;
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
+using UnityEditor;
+using UnityEngine;
+
+public class playercontrols : MonoBehaviour
+{   public Animator animator;// аниматор
+    public AudioClip jumpSound;// звук прыжка
+    public AudioClip crashSound;/звук смерти
+    private AudioSource playerAudio;//аудио проигрыватель
+    public ParticleSystem explosionParticle;//эфект смерти
+    public bool GameOver = false;//игра окончена
+    public bool IsGrounded;//на земле
+    public float JumpForce;//высота прыжка
+    Rigidbody rb;//действие с предметом
+    
+    // Start is called before the first frame update
+    void Start()
+    {   
+        animator = GetComponent<Animator>();  
+        playerAudio = GetComponent<AudioSource>();
+        IsGrounded = false;
+        rb = GetComponent<Rigidbody>();
+        animator.SetFloat("Speed_f", 0.6f);
+       // rb.AddForce(Vector3.up * 1000f);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && !GameOver && IsGrounded)// если кнопка пробел зажата и гейм овер фалс и исгроундед тру
+        {   
+            IsGrounded = false;
+            rb.AddForce(Vector3.up * JumpForce, ForceMode.Impulse);// буквально прыжок
+            animator.SetTrigger("Jump_trig");//срабатывает триггер прыжка она играется один раз
+            playerAudio.PlayOneShot(jumpSound, 1.0f);//играется хвук прыжка
+        }
+     }
+    private void OnCollisionEnter(Collision collision)
+    {
+        print(collision.gameObject.tag);
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            IsGrounded = true;
+        }
+        else if (collision.gameObject.CompareTag("Obstale"))
+        {
+            GameOver = true;
+            Debug.Log("ТЫ ЛОХ ПРОИГРАЛ");
+            explosionParticle.Play();
+            playerAudio.PlayOneShot(crashSound, 1.0f);
+        }
+    }
+}
