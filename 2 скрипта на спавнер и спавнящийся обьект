@@ -1,0 +1,97 @@
+ПЕРВЫЙ СКРИПТ
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.Scripting;
+using UnityEngine.UIElements;
+
+public class killerplatform : MonoBehaviour
+{
+    public int n = 0;
+    public spawner sp;
+    public int index;
+    // Start is called before the first frame update
+    void Start()
+    {
+    
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (-19>transform.position.z && sp.VelosityInput[index] <= 0)
+        {
+            sp.VelosityInput[index] *= -1;
+        }
+        if (transform.position.z > -4 && sp.VelosityInput[index] >= 0)
+        {
+            sp.VelosityInput[index] *= -1;
+        }
+    }
+    void OnTriggerEnter(Collider other) //есле в тригер вошли
+    {
+        if (other.tag == "Player") // есле тег игрок то
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);//метод класса SceneManger загружающий текущую сцену. Для работы нужно вверху скрипта прописать using UnityEngine.SceneManagement;
+        }
+    }
+}
+ВТОРОЙ СКРИПТ
+using System.Collections;
+using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor.Compilation;
+using UnityEngine;
+
+public class spawner : MonoBehaviour
+{
+    int count = 0;
+    public List<GameObject> Objects = new List<GameObject>();
+    public List<GameObject> ObjectsInput = new List<GameObject>();
+    public List<int> VelosityInput = new List<int>();
+    // Start is called before the first frame update
+    void RandomSpawner()
+    {
+        GameObject sp = GetComponent<GameObject>();
+        int b = Random.Range(10, 20);
+        GameObject a = Instantiate(Objects[0],
+                   new Vector3(Random.Range(-100, -16), 3, -17),
+                   Quaternion.identity);
+        ObjectsInput.Add(a);
+        VelosityInput.Add(b);
+        killerplatform Kp = a.GetComponent<killerplatform>();
+        Kp.index = count;
+        Kp.sp = this;
+        count++;
+    }
+
+    // Update is called once per frame
+    void Start()
+    {   
+        for (int i = 0; i < 10; i++)
+        {
+            RandomSpawner();
+        }
+        for (int i = 0; i < ObjectsInput.Count; i++)
+        {
+            GameObject b = ObjectsInput[i];
+            int speed = VelosityInput[i];
+            Rigidbody pilaRb = b.GetComponent<Rigidbody>();
+            pilaRb.velocity = (Vector3.forward * speed);
+            
+        }
+    }
+    void Update()
+    {   
+        for (int i = 0; i < ObjectsInput.Count; i++)
+        {
+         killerplatform Kp = ObjectsInput[i].GetComponent<killerplatform>();
+         GameObject b = ObjectsInput[i];
+         Rigidbody pilaRb = b.GetComponent<Rigidbody>();
+         pilaRb.velocity = (Vector3.forward * VelosityInput[i]);
+        }
+    }
+
+}
