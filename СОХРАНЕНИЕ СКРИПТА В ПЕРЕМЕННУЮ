@@ -1,0 +1,12 @@
+void RandomSpawner()// функция
+{
+    
+    int b = Random.Range(10, 20);// рандомная скорость
+    GameObject a = Instantiate(Objects[0],//вызов обьекта 
+               new Vector3(Random.Range(-100, -16), 3, -17),// его позиция
+               Quaternion.identity);// поворот
+    ObjectsInput.Add(a);// добавление характеристики в массив
+    VelosityInput.Add(b);//добавление характеристики в массив
+    killerplatform Kp = a.GetComponent<killerplatform>();// класс как тип данных , а= объект,киллерплатформ скрипт
+    Kp.index= 0;// скрипт.переменная = 0
+}
