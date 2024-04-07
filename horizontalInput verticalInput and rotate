@@ -5,7 +5,7 @@ using UnityEngine.UIElements;
 
 public class horizontal rotate : MonoBehaviour
 {
-    int rotationSpeed = 10;
+    public float rotationSpeed = 50;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,8 +15,8 @@ public class horizontal rotate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        transform.Rotate(new Vector3(0,5,0));
-    
+      float horizontalInput = Input.GetAxis("Horizontal");
+      float verticalInput = Input.GetAxis("Vertical");
+      transform.Rotate(Vector3.up,rotationSpeed * horizontalInput*Time.deltaTime);
     }
 }
