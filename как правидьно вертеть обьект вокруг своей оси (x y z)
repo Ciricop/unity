@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class pizzarotation : MonoBehaviour
+public class horizontal rotate : MonoBehaviour
 {
     int rotationSpeed = 10;
     // Start is called before the first frame update
