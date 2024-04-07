@@ -4,12 +4,12 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 public class horizontal rotate : MonoBehaviour
-{
+{   Rigidbody rb;
     public float rotationSpeed = 50;
     // Start is called before the first frame update
     void Start()
     {
-        
+        Rigidbody rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -18,5 +18,6 @@ public class horizontal rotate : MonoBehaviour
       float horizontalInput = Input.GetAxis("Horizontal");
       float verticalInput = Input.GetAxis("Vertical");
       transform.Rotate(Vector3.up,rotationSpeed * horizontalInput*Time.deltaTime);
+      rb.AddForce(Vector3.forward*speed*Time.deltaTime*forwardInput);
     }
 }
