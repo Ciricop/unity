@@ -21,8 +21,7 @@ public class playercontroll : MonoBehaviour
     void Update()
     {
         horizontalInput = Input.GetAxis("Horizontal");
-        rb.velocity = transform.right * speed * horizontalInput;
         verticalInput = Input.GetAxis("Vertical");
-        rb.velocity = transform.forward * speed * verticalInput;
+        rb.velocity = transform.right * speed * horizontalInput + transform.forward * speed * verticalInput; 
     }
 }
